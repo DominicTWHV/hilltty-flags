@@ -63,7 +63,7 @@ You can verify that the memory has been successfully registered with the command
 
 **Note:**
 
-Some systems may require you to edit the GRUB configs for the setting to work, if thats your case, add `GRUB_CMDLINE_LINUX_DEFAULT="vm.nr_hugepages=<YOUR_PAGE_AMOUNT> hugepagesz=2M"` into GRUB.
+Some systems may require you to edit the GRUB configs (at `sudo nano /etc/default/grub` ) for the setting to work, if thats your case, add `GRUB_CMDLINE_LINUX_DEFAULT="vm.nr_hugepages=<YOUR_PAGE_AMOUNT> hugepagesz=2M"` into GRUB.
 
 After, run `sudo update-grub` to update GRUB, then reboot.
 
