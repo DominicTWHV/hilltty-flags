@@ -58,7 +58,7 @@ Next, I recommend leaving some free space and adding 300 to our number.
 3072 + 300 = 3372
 ```
 
-Then we reboot the system to apply the changes, alternatively you can also run 'sudo sysctl -p' to apply the new config.
+Then we reboot the system to apply the changes, alternatively you can also run 'sudo sysctl -p' to apply the new config without rebooting.
 You can verify that the memory has been successfully registered with the command `grep -i hugepages /proc/meminfo`.
 
 **Note:**
@@ -66,6 +66,8 @@ You can verify that the memory has been successfully registered with the command
 Some systems may require you to edit the GRUB configs (at `sudo nano /etc/default/grub` ) for the setting to work, if thats your case, add `GRUB_CMDLINE_LINUX_DEFAULT="vm.nr_hugepages=<YOUR_PAGE_AMOUNT> hugepagesz=2M"` into GRUB.
 
 After, run `sudo update-grub` to update GRUB, then reboot.
+
+I have also found that instead of adding 300 to the number, adding 512 instead fixes the `OpenJDK 64-Bit Server VM warning: Failed to reserve and commit memory using large pages.` error.
 
 ---
 *-XX:+UnlockExperimentalVMOptions*: enables the use of experimental features.
